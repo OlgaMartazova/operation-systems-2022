@@ -6,8 +6,8 @@ import time
 import random
 
 
-dev fork_children():
-    child = os.fork
+def fork_children():
+    child = os.fork()
     if child > 0:
         print(f"Parent[{os.getpid()}]: I ran children process with PID {child}")
     else:
@@ -23,9 +23,9 @@ for i in range(0, n):
 while (n > 0):
     child_pid, status = os.wait()
     if (status != 0):
-        child = fork_children
+        child = fork_children()
     else:
         print(f"Parent[{os.getpid()}]: Child with PID {child_pid} terminated. Exit Status {status}.")
         n = n - 1
 
-os.exit(os.EX_OK)
+os._exit(os.EX_OK)
